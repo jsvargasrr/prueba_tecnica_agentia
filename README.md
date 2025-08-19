@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Prueba Técnica AgentIA
 
 API REST construida en **Laravel 10/11** que integra procesamiento de documentos PDF con ** PostgreSQL (pgvector)** para consultas semánticas.
