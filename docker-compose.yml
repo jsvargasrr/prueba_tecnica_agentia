@@ -1,0 +1,28 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg17
+    container_name: postgres_agent_ia
+    restart: always
+    environment:
+      POSTGRES_DB: prueba_tecnica
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: "Infoseg.00*"
+    ports:
+      - "5439:5432"
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+      - ./config/initdb:/docker-entrypoint-initdb.d
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: admin123
+    ports:
+      - "8081:80"
+    volumes:
+      - ./pgadmin:/var/lib/pgadmin
+    depends_on:
+      - postgres
